@@ -1,0 +1,1134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Beat Maker Pro - Professional beat production and marketplace. Buy and sell high-quality beats, mixing, and mastering services.">
+    <meta name="keywords" content="beat maker, music production, beats for sale, mixing, mastering, trap beats, hip hop beats">
+    <title>Beat Maker Pro | Professional Beat Production & Marketplace</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@300;400;500;600;700&family=Orbitron:wght@400;500;700&display=swap" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <style>
+        :root {
+            --primary-color: #FF6B35; /* Orange */
+            --secondary-color: #004E89; /* Blue */
+            --accent-color: #1A1A1A; /* Dark */
+            --light-bg: #F8F9FA;
+            --text-color: #333333;
+            --light-text: #FFFFFF;
+        }
+        
+        body {
+            font-family: 'Exo 2', sans-serif;
+            background-color: var(--light-bg);
+            color: var(--text-color);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        h1, h2, h3, h4, h5 {
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 700;
+        }
+        
+        /* Return to Portfolio Link */
+        .return-link-container {
+            padding: 12px;
+            background: var(--accent-color);
+            border-bottom: 1px solid var(--primary-color);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1100;
+        }
+        
+        .return-link {
+            color: white !important;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+            font-size: 14px;
+        }
+        
+        .return-link:hover {
+            color: var(--primary-color) !important;
+        }
+        
+        /* Adjust body padding to account for return link */
+        body {
+            padding-top: 50px;
+        }
+        
+        /* Navigation */
+        .navbar {
+            background-color: var(--accent-color);
+            padding: 20px 0;
+            transition: all 0.3s ease;
+            border-bottom: 2px solid var(--primary-color);
+            top: 45px; /* Adjusted for return link */
+        }
+        
+        .navbar.scrolled {
+            background-color: rgba(26, 26, 26, 0.95);
+            padding: 15px 0;
+        }
+        
+        .navbar-brand {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--primary-color) !important;
+        }
+        
+        .nav-link {
+            color: var(--light-text) !important;
+            font-weight: 500;
+            margin: 0 10px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .nav-link:hover {
+            color: var(--primary-color) !important;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: var(--primary-color);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .cart-badge {
+            background-color: var(--primary-color);
+            color: var(--light-text);
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.7rem;
+            position: absolute;
+            top: -5px;
+            right: -5px;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(26, 26, 26, 0.8), rgba(26, 26, 26, 0.9)), 
+                        url('https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80') no-repeat center center/cover;
+            height: 80vh;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            color: var(--light-text);
+        }
+        
+        .hero-content h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            margin-bottom: 1.5rem;
+            color: var(--light-text);
+        }
+        
+        .hero-content h1 span {
+            color: var(--primary-color);
+        }
+        
+        .hero-content p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+            color: #cccccc;
+        }
+        
+        /* Professional Button */
+        .btn-pro {
+            position: relative;
+            padding: 12px 30px;
+            background: var(--primary-color);
+            color: var(--light-text);
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            text-decoration: none;
+            display: inline-block;
+            margin: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-radius: 4px;
+        }
+        
+        .btn-pro::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--secondary-color);
+            z-index: -1;
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform 0.4s ease;
+        }
+        
+        .btn-pro:hover {
+            color: var(--light-text);
+        }
+        
+        .btn-pro:hover::before {
+            transform: scaleX(1);
+            transform-origin: left;
+        }
+        
+        .btn-outline-pro {
+            background: transparent;
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+        }
+        
+        .btn-outline-pro:hover {
+            color: var(--light-text);
+        }
+        
+        /* Beat Cards */
+        .beat-card {
+            background: var(--light-text);
+            border-radius: 8px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            border: 1px solid #eaeaea;
+        }
+        
+        .beat-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .beat-cover {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        
+        .beat-info {
+            padding: 20px;
+        }
+        
+        .beat-info h3 {
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--accent-color);
+        }
+        
+        .beat-info p {
+            color: #666;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+        }
+        
+        .beat-price {
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: var(--primary-color);
+        }
+        
+        .beat-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+            margin-bottom: 15px;
+        }
+        
+        .beat-tag {
+            background: var(--secondary-color);
+            color: var(--light-text);
+            padding: 3px 8px;
+            border-radius: 20px;
+            font-size: 0.7rem;
+        }
+        
+        /* Audio Player */
+        .audio-player {
+            width: 100%;
+            margin: 15px 0;
+        }
+        
+        .audio-player progress {
+            width: 100%;
+            height: 5px;
+            -webkit-appearance: none;
+            appearance: none;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        
+        .audio-player progress::-webkit-progress-bar {
+            background-color: #e0e0e0;
+            border-radius: 10px;
+        }
+        
+        .audio-player progress::-webkit-progress-value {
+            background-color: var(--primary-color);
+            border-radius: 10px;
+        }
+        
+        .player-controls {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 10px;
+        }
+        
+        .play-btn {
+            background: var(--primary-color);
+            color: var(--light-text);
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+        
+        .play-btn:hover {
+            background: var(--secondary-color);
+        }
+        
+        /* Sections */
+        section {
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            font-weight: 700;
+            margin-bottom: 3rem;
+            text-align: center;
+            position: relative;
+            color: var(--accent-color);
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 3px;
+            background: var(--primary-color);
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        /* Services Section */
+        .service-card {
+            background: var(--light-text);
+            border-radius: 8px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            border-top: 4px solid var(--primary-color);
+            transition: all 0.3s ease;
+            height: 100%;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+        }
+        
+        .service-icon {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+        
+        .service-card h3 {
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: var(--accent-color);
+        }
+        
+        .service-card p {
+            color: #666;
+            margin-bottom: 20px;
+        }
+        
+        /* Pricing Section */
+        .pricing-card {
+            background: var(--light-text);
+            border-radius: 8px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            border: 2px solid #eaeaea;
+            transition: all 0.3s ease;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .pricing-card.featured {
+            border-color: var(--primary-color);
+            transform: scale(1.05);
+        }
+        
+        .pricing-card.featured::before {
+            content: 'POPULAR';
+            position: absolute;
+            top: 20px;
+            right: -30px;
+            background: var(--primary-color);
+            color: var(--light-text);
+            padding: 5px 30px;
+            transform: rotate(45deg);
+            font-size: 0.8rem;
+            font-weight: 700;
+        }
+        
+        .pricing-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .pricing-card.featured:hover {
+            transform: scale(1.05) translateY(-10px);
+        }
+        
+        .price {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin: 20px 0;
+        }
+        
+        .price span {
+            font-size: 1rem;
+            color: #666;
+        }
+        
+        .pricing-features {
+            list-style: none;
+            padding: 0;
+            margin: 20px 0;
+        }
+        
+        .pricing-features li {
+            padding: 8px 0;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        
+        .pricing-features li:last-child {
+            border-bottom: none;
+        }
+        
+        /* Cart Sidebar */
+        .cart-sidebar {
+            position: fixed;
+            top: 0;
+            right: -400px;
+            width: 380px;
+            height: 100vh;
+            background: var(--light-text);
+            box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+            z-index: 1050;
+            transition: right 0.3s ease;
+            overflow-y: auto;
+        }
+        
+        .cart-sidebar.open {
+            right: 0;
+        }
+        
+        .cart-header {
+            padding: 20px;
+            border-bottom: 1px solid #eaeaea;
+            display: flex;
+            justify-content: between;
+            align-items: center;
+        }
+        
+        .cart-items {
+            padding: 20px;
+        }
+        
+        .cart-item {
+            display: flex;
+            padding: 15px 0;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        
+        .cart-item img {
+            width: 60px;
+            height: 60px;
+            object-fit: cover;
+            border-radius: 4px;
+            margin-right: 15px;
+        }
+        
+        .cart-item-details {
+            flex: 1;
+        }
+        
+        .cart-item-details h4 {
+            font-size: 1rem;
+            margin-bottom: 5px;
+        }
+        
+        .cart-item-details p {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 5px;
+        }
+        
+        .cart-item-price {
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+        
+        .remove-item {
+            background: none;
+            border: none;
+            color: #999;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+        
+        .remove-item:hover {
+            color: var(--primary-color);
+        }
+        
+        .cart-total {
+            padding: 20px;
+            border-top: 1px solid #eaeaea;
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+        
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1040;
+            display: none;
+        }
+        
+        .overlay.active {
+            display: block;
+        }
+        
+        /* Contact Form */
+        .contact-form .form-control {
+            background: var(--light-text);
+            border: 1px solid #ddd;
+            color: var(--text-color);
+            padding: 12px 15px;
+            margin-bottom: 20px;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+        
+        .contact-form .form-control:focus {
+            background: var(--light-text);
+            color: var(--text-color);
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 0.2rem rgba(255, 107, 53, 0.25);
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--accent-color);
+            padding: 60px 0 30px;
+            color: var(--light-text);
+        }
+        
+        .footer-links a {
+            color: #cccccc;
+            text-decoration: none;
+            margin: 0 15px;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: var(--primary-color);
+        }
+        
+        .copyright {
+            color: #888888;
+            font-size: 0.9rem;
+            margin-top: 40px;
+        }
+        
+        /* Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        
+        .fade-in.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            section {
+                padding: 60px 0;
+            }
+            
+            .hero {
+                height: 70vh;
+            }
+            
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero-content p {
+                font-size: 1rem;
+            }
+            
+            .cart-sidebar {
+                width: 100%;
+                right: -100%;
+            }
+            
+            .pricing-card.featured {
+                transform: scale(1);
+            }
+            
+            .pricing-card.featured:hover {
+                transform: translateY(-10px);
+            }
+            
+            /* Adjust for mobile */
+            body {
+                padding-top: 45px;
+            }
+            
+            .navbar {
+                top: 40px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Return to Portfolio Link -->
+    <div class="return-link-container">
+        <a href="../index.html" class="return-link">
+            <i class="fas fa-arrow-left"></i> Back to 956pixelflow Portfolio
+        </a>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">BEAT MAKER PRO</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#beats">Beats</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#services">Services</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#pricing">Pricing</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">Contact</a>
+                    </li>
+                    <li class="nav-item position-relative">
+                        <a class="nav-link" href="#" id="cart-toggle">
+                            <i class="fas fa-shopping-cart"></i>
+                            <span class="cart-badge">3</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Cart Sidebar -->
+    <div class="cart-sidebar" id="cart-sidebar">
+        <div class="cart-header">
+            <h3>Your Cart</h3>
+            <button class="btn-close" id="close-cart"></button>
+        </div>
+        <div class="cart-items">
+            <div class="cart-item">
+                <img src="https://images.unsplash.com/photo-1470225620780-dba8ba36b745?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="Beat">
+                <div class="cart-item-details">
+                    <h4>Midnight Drive</h4>
+                    <p>Trap • MP3 Lease</p>
+                    <div class="cart-item-price">$29.99</div>
+                </div>
+                <button class="remove-item"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="cart-item">
+                <img src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="Beat">
+                <div class="cart-item-details">
+                    <h4>Urban Dreams</h4>
+                    <p>Hip Hop • WAV Lease</p>
+                    <div class="cart-item-price">$49.99</div>
+                </div>
+                <button class="remove-item"><i class="fas fa-times"></i></button>
+            </div>
+        </div>
+        <div class="cart-total">
+            Total: $79.98
+        </div>
+        <div class="p-3">
+            <button class="btn-pro w-100">Checkout</button>
+        </div>
+    </div>
+    <div class="overlay" id="overlay"></div>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <div class="hero-content">
+                        <h1 class="mb-4">PROFESSIONAL <span>BEAT PRODUCTION</span></h1>
+                        <p class="mb-5">Premium beats, mixing, and mastering services for serious artists. Elevate your sound with industry-quality production.</p>
+                        <a href="#beats" class="btn-pro">Shop Beats</a>
+                        <a href="#services" class="btn-pro btn-outline-pro">View Services</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Beats Section -->
+    <section id="beats" class="fade-in">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 text-center mb-5">
+                    <h2 class="section-title">Featured Beats</h2>
+                    <p>Industry-quality instrumentals ready for your next hit</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 col-lg-4">
+                    <div class="beat-card">
+                        <img src="https://images.unsplash.com/photo-1470225620780-dba8ba36b745?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" class="beat-cover" alt="Midnight Drive Beat">
+                        <div class="beat-info">
+                            <h3>Midnight Drive</h3>
+                            <div class="beat-tags">
+                                <span class="beat-tag">Trap</span>
+                                <span class="beat-tag">Dark</span>
+                                <span class="beat-tag">140 BPM</span>
+                            </div>
+                            <p>Atmospheric trap beat with heavy 808s and haunting melodies. Perfect for introspective lyrics.</p>
+                            
+                            <div class="audio-player">
+                                <progress value="0" max="100"></progress>
+                                <div class="player-controls">
+                                    <button class="play-btn"><i class="fas fa-play"></i></button>
+                                    <span>0:30 / 3:45</span>
+                                    <div class="beat-price">$29.99</div>
+                                </div>
+                            </div>
+                            
+                            <div class="d-flex justify-content-between mt-3">
+                                <button class="btn-pro" style="padding: 8px 15px;">Add to Cart</button>
+                                <button class="btn-pro btn-outline-pro" style="padding: 8px 15px;">Preview</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="beat-card">
+                        <img src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" class="beat-cover" alt="Urban Dreams Beat">
+                        <div class="beat-info">
+                            <h3>Urban Dreams</h3>
+                            <div class="beat-tags">
+                                <span class="beat-tag">Hip Hop</span>
+                                <span class="beat-tag">Jazzy</span>
+                                <span class="beat-tag">95 BPM</span>
+                            </div>
+                            <p>Smooth hip hop instrumental with soulful samples and crisp drums. Ideal for storytelling.</p>
+                            
+                            <div class="audio-player">
+                                <progress value="0" max="100"></progress>
+                                <div class="player-controls">
+                                    <button class="play-btn"><i class="fas fa-play"></i></button>
+                                    <span>0:30 / 4:15</span>
+                                    <div class="beat-price">$49.99</div>
+                                </div>
+                            </div>
+                            
+                            <div class="d-flex justify-content-between mt-3">
+                                <button class="btn-pro" style="padding: 8px 15px;">Add to Cart</button>
+                                <button class="btn-pro btn-outline-pro" style="padding: 8px 15px;">Preview</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="beat-card">
+                        <img src="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" class="beat-cover" alt="Bassline Beat">
+                        <div class="beat-info">
+                            <h3>Bassline</h3>
+                            <div class="beat-tags">
+                                <span class="beat-tag">Trap</span>
+                                <span class="beat-tag">Bass</span>
+                                <span class="beat-tag">150 BPM</span>
+                            </div>
+                            <p>Aggressive trap beat with distorted 808s and hard-hitting drums. For high-energy tracks.</p>
+                            
+                            <div class="audio-player">
+                                <progress value="0" max="100"></progress>
+                                <div class="player-controls">
+                                    <button class="play-btn"><i class="fas fa-play"></i></button>
+                                    <span>0:30 / 3:20</span>
+                                    <div class="beat-price">$39.99</div>
+                                </div>
+                            </div>
+                            
+                            <div class="d-flex justify-content-between mt-3">
+                                <button class="btn-pro" style="padding: 8px 15px;">Add to Cart</button>
+                                <button class="btn-pro btn-outline-pro" style="padding: 8px 15px;">Preview</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-4">
+                <div class="col-12 text-center">
+                    <a href="#" class="btn-pro">View All Beats</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="bg-light fade-in">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 text-center mb-5">
+                    <h2 class="section-title">Production Services</h2>
+                    <p>Complete music production solutions for artists</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 col-lg-4">
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-music"></i>
+                        </div>
+                        <h3>Custom Beat Making</h3>
+                        <p>Tailored beats crafted to your exact specifications, style, and vision. We work closely with you to create the perfect instrumental.</p>
+                        <a href="#" class="btn-pro" style="padding: 8px 20px;">Learn More</a>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-sliders-h"></i>
+                        </div>
+                        <h3>Mixing & Mastering</h3>
+                        <p>Professional audio engineering to make your tracks radio-ready. Industry-standard processing for clarity, punch, and loudness.</p>
+                        <a href="#" class="btn-pro" style="padding: 8px 20px;">Learn More</a>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-user-plus"></i>
+                        </div>
+                        <h3>Artist Development</h3>
+                        <p>Coaching and guidance to help you refine your sound, brand, and marketing strategy. Elevate your career with professional insights.</p>
+                        <a href="#" class="btn-pro" style="padding: 8px 20px;">Learn More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="fade-in">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 text-center mb-5">
+                    <h2 class="section-title">Beat Licensing</h2>
+                    <p>Choose the right license for your project</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="pricing-card">
+                        <h3>MP3 Lease</h3>
+                        <div class="price">$29.99</div>
+                        <ul class="pricing-features">
+                            <li>MP3 File (320 kbps)</li>
+                            <li>Non-Exclusive Rights</li>
+                            <li>Up to 10,000 Streams</li>
+                            <li>Radio Play (Local)</li>
+                            <li>Basic Support</li>
+                        </ul>
+                        <button class="btn-pro w-100">Select Plan</button>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="pricing-card featured">
+                        <h3>WAV Lease</h3>
+                        <div class="price">$49.99</div>
+                        <ul class="pricing-features">
+                            <li>WAV File (24-bit)</li>
+                            <li>Non-Exclusive Rights</li>
+                            <li>Up to 100,000 Streams</li>
+                            <li>Radio Play (National)</li>
+                            <li>Stems Included</li>
+                            <li>Priority Support</li>
+                        </ul>
+                        <button class="btn-pro w-100">Select Plan</button>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="pricing-card">
+                        <h3>Exclusive Rights</h3>
+                        <div class="price">$299.99</div>
+                        <ul class="pricing-features">
+                            <li>All File Formats</li>
+                            <li>Exclusive Rights</li>
+                            <li>Unlimited Streams</li>
+                            <li>Worldwide Radio</li>
+                            <li>All Stems & Project Files</li>
+                            <li>24/7 Priority Support</li>
+                        </ul>
+                        <button class="btn-pro w-100">Select Plan</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="bg-light fade-in">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 text-center mb-5">
+                    <h2 class="section-title">Get In Touch</h2>
+                    <p>Ready to work together? Let's discuss your project</p>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <form id="contactForm" class="contact-form">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="name" class="form-label">Your Name</label>
+                                    <input type="text" class="form-control" id="name" required>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="email" class="form-label">Email Address</label>
+                                    <input type="email" class="form-control" id="email" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="subject" class="form-label">Subject</label>
+                            <input type="text" class="form-control" id="subject" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="service" class="form-label">Service Interested In</label>
+                            <select class="form-control" id="service" required>
+                                <option value="">Select a service</option>
+                                <option value="beats">Beat Production</option>
+                                <option value="mixing">Mixing & Mastering</option>
+                                <option value="development">Artist Development</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        <div class="mb-4">
+                            <label for="message" class="form-label">Your Message</label>
+                            <textarea class="form-control" id="message" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="btn-pro w-100">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="fade-in">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 text-center">
+                    <div class="footer-links mb-4">
+                        <a href="#home">Home</a>
+                        <a href="#beats">Beats</a>
+                        <a href="#services">Services</a>
+                        <a href="#pricing">Pricing</a>
+                        <a href="#contact">Contact</a>
+                        <a href="#">Privacy Policy</a>
+                        <a href="#">Terms of Service</a>
+                    </div>
+                    <div class="social-icons mb-4">
+                        <a href="#" class="social-icon" style="background: transparent; border: 1px solid var(--primary-color); color: var(--primary-color);"><i class="fab fa-spotify"></i></a>
+                        <a href="#" class="social-icon" style="background: transparent; border: 1px solid var(--primary-color); color: var(--primary-color);"><i class="fab fa-soundcloud"></i></a>
+                        <a href="#" class="social-icon" style="background: transparent; border: 1px solid var(--primary-color); color: var(--primary-color);"><i class="fab fa-youtube"></i></a>
+                        <a href="#" class="social-icon" style="background: transparent; border: 1px solid var(--primary-color); color: var(--primary-color);"><i class="fab fa-instagram"></i></a>
+                    </div>
+                    <p class="copyright">© 2023 Beat Maker Pro. All Rights Reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Custom JavaScript -->
+    <script>
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Cart functionality
+        const cartToggle = document.getElementById('cart-toggle');
+        const cartSidebar = document.getElementById('cart-sidebar');
+        const closeCart = document.getElementById('close-cart');
+        const overlay = document.getElementById('overlay');
+
+        cartToggle.addEventListener('click', function(e) {
+            e.preventDefault();
+            cartSidebar.classList.add('open');
+            overlay.classList.add('active');
+        });
+
+        closeCart.addEventListener('click', function() {
+            cartSidebar.classList.remove('open');
+            overlay.classList.remove('active');
+        });
+
+        overlay.addEventListener('click', function() {
+            cartSidebar.classList.remove('open');
+            overlay.classList.remove('active');
+        });
+
+        // Intersection Observer for scroll animations
+        document.addEventListener('DOMContentLoaded', function() {
+            const fadeElements = document.querySelectorAll('.fade-in');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+
+            fadeElements.forEach(element => {
+                observer.observe(element);
+            });
+
+            // Audio player functionality
+            const playButtons = document.querySelectorAll('.play-btn');
+            
+            playButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const icon = this.querySelector('i');
+                    if (icon.classList.contains('fa-play')) {
+                        icon.classList.remove('fa-play');
+                        icon.classList.add('fa-pause');
+                        // In a real implementation, this would play the audio
+                    } else {
+                        icon.classList.remove('fa-pause');
+                        icon.classList.add('fa-play');
+                        // In a real implementation, this would pause the audio
+                    }
+                });
+            });
+
+            // Form submission
+            const contactForm = document.getElementById('contactForm');
+            
+            contactForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Get form values
+                const name = document.getElementById('name').value;
+                const email = document.getElementById('email').value;
+                const subject = document.getElementById('subject').value;
+                const service = document.getElementById('service').value;
+                const message = document.getElementById('message').value;
+                
+                // Here you would typically send the data to a server
+                console.log('Form submitted:', { name, email, subject, service, message });
+                
+                // Show success message
+                alert('Thank you for your message! We will get back to you soon.');
+                
+                // Reset form
+                contactForm.reset();
+            });
+
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

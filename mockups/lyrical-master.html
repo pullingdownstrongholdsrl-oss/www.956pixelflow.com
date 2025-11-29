@@ -1,0 +1,880 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Lyrical Master - Premium website template for rappers and lyricists. Showcase your poetic skills and storytelling through elegant typography.">
+    <meta name="keywords" content="rapper website, lyricist, poetry, hip-hop website, storytelling">
+    <meta name="author" content="Lyrical Master Template">
+    <title>Lyrical Master | Premium Lyricist Website Template</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <style>
+        :root {
+            --primary-color: #2c5530; /* Deep green */
+            --secondary-color: #f8f9fa;
+            --accent-color: #8d6e63;
+            --text-color: #2c2c2c;
+            --text-secondary: #6c757d;
+            --gold: #c9a96e;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--secondary-color);
+            color: var(--text-color);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+        
+        h1, h2, h3, h4, h5 {
+            font-family: 'Crimson Text', serif;
+            font-weight: 700;
+        }
+        
+        /* Back Link Styles */
+        .back-link-container {
+            padding: 15px;
+            background: #f8f9fa;
+            border-bottom: 1px solid #dee2e6;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1100;
+        }
+        
+        .back-link {
+            color: var(--primary-color) !important;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+        
+        .back-link:hover {
+            color: var(--gold) !important;
+        }
+        
+        /* Adjust body padding to account for back link */
+        body {
+            padding-top: 60px;
+        }
+        
+        /* Navigation */
+        .navbar {
+            background-color: rgba(248, 249, 250, 0.95);
+            padding: 20px 0;
+            transition: all 0.3s ease;
+            top: 50px; /* Adjusted for back link */
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+        
+        .navbar.scrolled {
+            background-color: rgba(248, 249, 250, 0.98);
+            padding: 15px 0;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+        }
+        
+        .navbar-brand {
+            font-family: 'Crimson Text', serif;
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--primary-color) !important;
+        }
+        
+        .nav-link {
+            color: var(--text-color) !important;
+            font-weight: 500;
+            margin: 0 10px;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+        
+        .nav-link:hover {
+            color: var(--primary-color) !important;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: var(--primary-color);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)), 
+                        url('https://images.unsplash.com/photo-1514525253161-7a46d19cd819?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80') no-repeat center center/cover;
+            height: 90vh;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            position: relative;
+        }
+        
+        .hero-content h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+        
+        .hero-content .subtitle {
+            font-size: 1.5rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            font-style: italic;
+        }
+        
+        .hero-quote {
+            max-width: 700px;
+            margin: 0 auto;
+            font-size: 1.2rem;
+            color: var(--text-color);
+            font-style: italic;
+            border-left: 3px solid var(--gold);
+            padding-left: 20px;
+            margin-top: 2rem;
+        }
+        
+        /* Typography Button */
+        .btn-typography {
+            position: relative;
+            padding: 12px 30px;
+            background: transparent;
+            color: var(--primary-color);
+            font-weight: 600;
+            border: 2px solid var(--primary-color);
+            cursor: pointer;
+            z-index: 1;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            text-decoration: none;
+            display: inline-block;
+            margin: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .btn-typography::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--primary-color);
+            z-index: -1;
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform 0.4s ease;
+        }
+        
+        .btn-typography:hover {
+            color: white;
+        }
+        
+        .btn-typography:hover::before {
+            transform: scaleX(1);
+            transform-origin: left;
+        }
+        
+        /* Social Icons */
+        .social-icon {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: transparent;
+            color: var(--primary-color);
+            border: 1px solid var(--primary-color);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 8px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .social-icon:hover {
+            background: var(--primary-color);
+            color: white;
+            transform: translateY(-3px);
+        }
+        
+        /* Sections */
+        section {
+            padding: 100px 0;
+        }
+        
+        .section-title {
+            font-weight: 700;
+            margin-bottom: 3rem;
+            color: var(--primary-color);
+            text-align: center;
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 2px;
+            background: var(--gold);
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        /* Lyrics Section */
+        .lyrics-container {
+            background: white;
+            border-radius: 8px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            margin-bottom: 40px;
+            border-left: 4px solid var(--gold);
+        }
+        
+        .lyrics-title {
+            font-family: 'Crimson Text', serif;
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+        }
+        
+        .lyrics-content {
+            font-family: 'Crimson Text', serif;
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: var(--text-color);
+        }
+        
+        .lyrics-meta {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-top: 1.5rem;
+            font-style: italic;
+        }
+        
+        /* Poetry Section */
+        .poem-card {
+            background: white;
+            border-radius: 8px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            margin-bottom: 30px;
+            transition: all 0.3s ease;
+            height: 100%;
+            border-top: 3px solid var(--gold);
+        }
+        
+        .poem-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .poem-title {
+            font-family: 'Crimson Text', serif;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+        
+        .poem-content {
+            font-family: 'Crimson Text', serif;
+            font-size: 1.1rem;
+            line-height: 1.7;
+            color: var(--text-color);
+        }
+        
+        /* Music Section */
+        .album-card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(44, 85, 48, 0.1);
+        }
+        
+        .album-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .album-cover {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+        
+        .album-info {
+            padding: 25px;
+        }
+        
+        .album-info h3 {
+            font-family: 'Crimson Text', serif;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--primary-color);
+        }
+        
+        .album-info p {
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+        }
+        
+        /* About Section */
+        .about-content {
+            background: white;
+            border-radius: 8px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+        }
+        
+        .about-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--text-color);
+        }
+        
+        .signature {
+            font-family: 'Crimson Text', serif;
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            margin-top: 2rem;
+            text-align: right;
+        }
+        
+        /* Contact Form */
+        .contact-form .form-control {
+            background: white;
+            border: 1px solid #dee2e6;
+            color: var(--text-color);
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .contact-form .form-control:focus {
+            background: white;
+            color: var(--text-color);
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 0.25rem rgba(44, 85, 48, 0.1);
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--primary-color);
+            padding: 60px 0 30px;
+            color: white;
+        }
+        
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            margin: 0 15px;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: white;
+        }
+        
+        .copyright {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+            margin-top: 40px;
+        }
+        
+        /* Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        
+        .fade-in.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Quote Styles */
+        .quote-mark {
+            font-size: 4rem;
+            color: var(--gold);
+            line-height: 1;
+            font-family: 'Crimson Text', serif;
+        }
+        
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            section {
+                padding: 80px 0;
+            }
+            
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero-content .subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .social-icon {
+                width: 40px;
+                height: 40px;
+                font-size: 1rem;
+                margin: 0 5px;
+            }
+            
+            .album-card {
+                margin-bottom: 20px;
+            }
+            
+            /* Adjust for mobile */
+            body {
+                padding-top: 50px;
+            }
+            
+            .navbar {
+                top: 40px;
+            }
+            
+            .lyrics-container, .about-content {
+                padding: 25px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Back to Portfolio Link -->
+    <div class="back-link-container">
+        <a href="../index.html" class="back-link">
+            <i class="fas fa-arrow-left"></i> Back to 956pixelflow Portfolio
+        </a>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">LYRICAL MASTER</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#lyrics">Lyrics</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#poetry">Poetry</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#music">Music</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <div class="hero-content">
+                        <h1 class="mb-3">LYRICAL MASTER</h1>
+                        <p class="subtitle">Where Words Become Art</p>
+                        <p class="hero-quote">"I paint with words, crafting verses that breathe life into emotions and stories that resonate with souls seeking truth in rhythm."</p>
+                        <a href="#lyrics" class="btn-typography">Explore Lyrics</a>
+                    </div>
+                    <div class="social-icons mt-5">
+                        <a href="#" class="social-icon"><i class="fab fa-spotify"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-apple"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-soundcloud"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Lyrics Section -->
+    <section id="lyrics" class="fade-in">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-10 text-center mb-5">
+                    <h2 class="section-title">Featured Lyrics</h2>
+                    <p>Words that tell stories, verses that capture moments</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-10 mx-auto">
+                    <div class="lyrics-container">
+                        <h3 class="lyrics-title">"Ink & Soul"</h3>
+                        <div class="lyrics-content">
+                            <p>My pen bleeds the ink of my soul's deepest thoughts<br>
+                            Unfiltered emotions that can't ever be bought<br>
+                            I write through the pain, the joy, and the strife<br>
+                            Documenting the chapters that make up my life</p>
+                            
+                            <p>Each verse is a window to what's in my heart<br>
+                            A mosaic of feelings, a work of pure art<br>
+                            The rhythm, the flow, the carefully placed words<br>
+                            Are echoes of truths that are seldomly heard</p>
+                            
+                            <p>I'm painting with syllables, crafting with sound<br>
+                            Where meaning and meter are profoundly profound<br>
+                            These aren't just lyrics, they're pieces of me<br>
+                            Unlocked by the rhythm for all souls to see</p>
+                        </div>
+                        <div class="lyrics-meta">
+                            From the album "Verbal Canvas" • Track 3 • Released 2023
+                        </div>
+                    </div>
+                    
+                    <div class="lyrics-container">
+                        <h3 class="lyrics-title">"Pages of My Mind"</h3>
+                        <div class="lyrics-content">
+                            <p>I open the book of my consciousness wide<br>
+                            Where thoughts and ideas and memories reside<br>
+                            Each page tells a story, each chapter a phase<br>
+                            Of lessons I've learned through life's complex maze</p>
+                            
+                            <p>The ink never fades, the words never blur<br>
+                            They capture the essence of all that occurred<br>
+                            The pain and the triumph, the loss and the gain<br>
+                            Are permanently etched in my mental domain</p>
+                            
+                            <p>I read through these pages when searching for truth<br>
+                            The wisdom collected throughout my youth<br>
+                            These words are my compass, my guide, and my light<br>
+                            Illuminating paths through the darkest of nights</p>
+                        </div>
+                        <div class="lyrics-meta">
+                            From the album "Cognitive Rhymes" • Track 7 • Released 2022
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Poetry Section -->
+    <section id="poetry" class="bg-light fade-in">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-10 text-center mb-5">
+                    <h2 class="section-title">Spoken Word & Poetry</h2>
+                    <p>Raw, unfiltered expressions beyond the music</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="poem-card">
+                        <h3 class="poem-title">Urban Echoes</h3>
+                        <div class="poem-content">
+                            <p>The city breathes in concrete sighs,<br>
+                            Underneath the neon-lit skies.<br>
+                            Stories whispered through the streets,<br>
+                            In the rhythm of a thousand beats.</p>
+                            
+                            <p>Graffiti tears on brick wall faces,<br>
+                            In these familiar, crowded places.<br>
+                            Every corner holds a tale,<br>
+                            Riding on the urban gale.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="poem-card">
+                        <h3 class="poem-title">Syllable Symphony</h3>
+                        <div class="poem-content">
+                            <p>Words dance upon the silent page,<br>
+                            Setting free a verbal rage.<br>
+                            Syllables in perfect time,<br>
+                            Creating rhythm and sweet rhyme.</p>
+                            
+                            <p>Each consonant, each vowel sound,<br>
+                            On this hallowed verbal ground.<br>
+                            Building castles made of air,<br>
+                            With meticulous poet's care.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="poem-card">
+                        <h3 class="poem-title">Ink-Stained Fingers</h3>
+                        <div class="poem-content">
+                            <p>My fingers stained with midnight blue,<br>
+                            Creating worlds both false and true.<br>
+                            Each drop of ink a thought released,<br>
+                            From inner turmoil finding peace.</p>
+                            
+                            <p>The paper drinks what my soul spills,<br>
+                            Curing all my mental ills.<br>
+                            Through written word I find my voice,<br>
+                            Making my own conscious choice.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Music Section -->
+    <section id="music" class="fade-in">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-10 text-center mb-5">
+                    <h2 class="section-title">Discography</h2>
+                    <p>Albums and projects where lyrics take center stage</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="album-card">
+                        <img src="https://images.unsplash.com/photo-1614680376573-df3480f0c6ff?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80" class="album-cover" alt="Verbal Canvas Album">
+                        <div class="album-info">
+                            <h3>Verbal Canvas</h3>
+                            <p>Album • 2023 • 14 Tracks</p>
+                            <p class="mb-3">A collection of lyrical masterpieces painting vivid stories through words and rhythm.</p>
+                            <div class="d-flex justify-content-between">
+                                <a href="#" class="btn-typography" style="padding: 8px 20px; font-size: 0.9rem;">Stream</a>
+                                <a href="#" class="btn-typography" style="padding: 8px 20px; font-size: 0.9rem;">Lyrics</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="album-card">
+                        <img src="https://images.unsplash.com/photo-1511379938547-c1f69419868d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" class="album-cover" alt="Cognitive Rhymes Album">
+                        <div class="album-info">
+                            <h3>Cognitive Rhymes</h3>
+                            <p>Album • 2022 • 12 Tracks</p>
+                            <p class="mb-3">Exploring the depths of consciousness through intricate wordplay and thoughtful verses.</p>
+                            <div class="d-flex justify-content-between">
+                                <a href="#" class="btn-typography" style="padding: 8px 20px; font-size: 0.9rem;">Stream</a>
+                                <a href="#" class="btn-typography" style="padding: 8px 20px; font-size: 0.9rem;">Lyrics</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="album-card">
+                        <img src="https://images.unsplash.com/photo-1571330735066-03aaa9429d89?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" class="album-cover" alt="Metaphorical Mind EP">
+                        <div class="album-info">
+                            <h3>Metaphorical Mind</h3>
+                            <p>EP • 2021 • 6 Tracks</p>
+                            <p class="mb-3">The debut project that introduced a unique lyrical perspective to the hip-hop landscape.</p>
+                            <div class="d-flex justify-content-between">
+                                <a href="#" class="btn-typography" style="padding: 8px 20px; font-size: 0.9rem;">Stream</a>
+                                <a href="#" class="btn-typography" style="padding: 8px 20px; font-size: 0.9rem;">Lyrics</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="bg-light fade-in">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-10 text-center mb-5">
+                    <h2 class="section-title">The Art of Words</h2>
+                    <p>My journey with language and rhythm</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-10 mx-auto">
+                    <div class="about-content">
+                        <div class="about-text">
+                            <p>I've always believed that words hold immense power. They can heal, inspire, challenge, and transform. My journey as a lyricist began not in a recording studio, but in the pages of countless notebooks filled with poetry, observations, and fragments of thoughts.</p>
+                            
+                            <p>For me, hip-hop became the perfect medium to blend the rhythmic quality of poetry with the raw energy of musical expression. Each song is a chapter, each verse a carefully crafted piece of a larger narrative about the human experience.</p>
+                            
+                            <p>My creative process is deeply introspective. I draw inspiration from literature, philosophy, personal experiences, and the world around me. The challenge of finding the perfect word, the right rhythm, the most impactful metaphor - that's where the magic happens.</p>
+                            
+                            <p>This website is a sanctuary for those who appreciate the art of lyricism. Here, you'll find not just music, but the stories behind the songs, the poetry that fuels the creativity, and the words that form the foundation of my artistic expression.</p>
+                            
+                            <p>Thank you for visiting and sharing in this journey of verbal artistry.</p>
+                        </div>
+                        <div class="signature">- The Lyrical Master</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="fade-in">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-10 text-center mb-5">
+                    <h2 class="section-title">Connect & Collaborate</h2>
+                    <p>For lyrical collaborations, features, and inquiries</p>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <form id="contactForm" class="contact-form">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="name" class="form-label">Your Name</label>
+                                    <input type="text" class="form-control" id="name" required>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="email" class="form-label">Email Address</label>
+                                    <input type="email" class="form-control" id="email" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="subject" class="form-label">Subject</label>
+                            <input type="text" class="form-control" id="subject" required>
+                        </div>
+                        <div class="mb-4">
+                            <label for="message" class="form-label">Your Message</label>
+                            <textarea class="form-control" id="message" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="btn-typography w-100">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="fade-in">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 text-center">
+                    <div class="footer-links mb-4">
+                        <a href="#home">Home</a>
+                        <a href="#lyrics">Lyrics</a>
+                        <a href="#poetry">Poetry</a>
+                        <a href="#music">Music</a>
+                        <a href="#about">About</a>
+                        <a href="#contact">Contact</a>
+                    </div>
+                    <div class="social-icons mb-4">
+                        <a href="#" class="social-icon"><i class="fab fa-spotify"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-apple"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-soundcloud"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a>
+                    </div>
+                    <p class="copyright">© 2023 Lyrical Master Template. All Rights Reserved. | Crafted with words and rhythm</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Custom JavaScript -->
+    <script>
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Intersection Observer for scroll animations
+        document.addEventListener('DOMContentLoaded', function() {
+            const fadeElements = document.querySelectorAll('.fade-in');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+
+            fadeElements.forEach(element => {
+                observer.observe(element);
+            });
+
+            // Form submission
+            const contactForm = document.getElementById('contactForm');
+            
+            contactForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Get form values
+                const name = document.getElementById('name').value;
+                const email = document.getElementById('email').value;
+                const subject = document.getElementById('subject').value;
+                const message = document.getElementById('message').value;
+                
+                // Here you would typically send the data to a server
+                console.log('Form submitted:', { name, email, subject, message });
+                
+                // Show success message
+                alert('Thank you for your message! I appreciate your interest in my work and will respond soon.');
+                
+                // Reset form
+                contactForm.reset();
+            });
+
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
